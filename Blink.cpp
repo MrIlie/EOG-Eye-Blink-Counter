@@ -2,16 +2,24 @@
 
 #define SAMPLES 200000
 
-unsigned int blinks = 0;          //contorizeaza numarul de clipiri
+int blinks = 0;          //contorizeaza numarul de clipiri
 
 
-void EyeBlink( void )
+void EyeBlink( int reset )
 {
-  blinks++;
+  
+  if( reset == 1 )
+  {
+    blinks = 0; 
+    Serial.println("reset");
+  }
+  else blinks++;
+  Serial.println(blinks);
 }
 
-int Blink_Frequency( void )
+void Blink_Frequency()
 {
-  return blinks / SAMPLES;
+  Serial.print("--------------------");
+  Serial.println(blinks);
 }
 

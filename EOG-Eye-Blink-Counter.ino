@@ -54,6 +54,9 @@ char y_cmd_cnt = 0;                   // Contor inactivare comanda axa y
 unsigned char x_stare = 0;
 unsigned char y_stare = 0;
 
+float bpm = 0;               //clipiri pe minut
+unsigned int counter = 0;    //contor timp
+
 int _timer = 0;
 int reset_duration = 0;
 int last_x_average = 0;               // Ultima valoare medie de pe axa x
@@ -79,7 +82,7 @@ void setup() {
 
 ////////////////////////////////////////////////////////////////////////////////////////////a = 19;
 
-void Xcheck(int xValue)
+/*void Xcheck(int xValue)
 {
   
    //set starea s1
@@ -116,23 +119,34 @@ void Xcheck(int xValue)
   
 }  
   
-  
+  */
 void Ycheck(int yValue)
 {
-  
+  if(counter == 7200) 
+  {
+    Blink_Frequency();
+    EyeBlink(1);
+    counter = 0; 
+  }
+    counter++;
+   
    //set starea s1
    if( last_y_average < y_threshold_up && yValue > y_threshold_up && !y_stare)
    {
-      y_stare = 1;
-      Serial.println("up");
+      //y_stare = 1;
+      //Serial.println("up");
       //Keyboard.press(KEY_RIGHT_ARROW);
       //Keyboard.press('d');
       //Keyboard.releaseAll();
       
+      
+      EyeBlink(0);
+      //bpm = Blink_Frequency() / 2;
+      //Serial.println(bpm);
    }
 
    //set starea s2
-   if( last_y_average > y_threshold_dn && yValue < y_threshold_dn && !y_stare)
+  /* if( last_y_average > y_threshold_dn && yValue < y_threshold_dn && !y_stare)
    {
       y_stare = 2;
       Serial.println("down");
@@ -142,7 +156,7 @@ void Ycheck(int yValue)
       //Keyboard.releaseAll();
       
    }
-  
+  */
    //reset in starea s0
    if(( yValue <= y_threshold_dn && y_stare == 1) || 
    ( yValue >= y_threshold_up && y_stare == 2))
@@ -193,9 +207,8 @@ void readADC_values() {
       y_mean_filt += y_sampleBuf[i];
     y_mean_filt = y_mean_filt / READINGS;
 
-    Xcheck(x_mean_filt);
+   // Xcheck(x_mean_filt);
     Ycheck(y_mean_filt); 
-    EyeBlink(y_mean_filt);
      
    /* Serial.print(0);
     Serial.print(",");
