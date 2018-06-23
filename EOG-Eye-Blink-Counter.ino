@@ -177,7 +177,14 @@ void help() // Opreste citirea clipirilor
   Serial.println("");
   Serial.println(">start 1 2");
   Serial.println("Citeste clipirile la un interval de 1 minut");
-  Serial.end();
+  Serial.println("");
+  Serial.println("");
+  Serial.println("Comanda: stop");
+  Serial.println("Opreste executia programului");
+  Serial.println("");
+  Serial.println("");
+  Serial.println("Comanda: close");
+  Serial.println("Intrerupe comunicatia cu calculatorul");
 }
 
 
@@ -284,7 +291,7 @@ void loop() {
 
 void unrecognized()
 {
-  int var = random(0, 9);
+  int var = random(0, 10);
   switch (var) {
     case 1:
       Serial.println("Ce?"); 
@@ -305,10 +312,16 @@ void unrecognized()
       Serial.println("Nene, ai gresit comanda!"); 
       break;
     case 7:
-      Serial.println("Gresirea unei comenzi, imi violeaza ALU."); 
+      Serial.println("Gresirea unei comenzi, ii dauneaza grav oscilatorului."); 
       break;
     case 8:
       Serial.println("Nu mai gresi comanda, ba pastarnacule!"); 
+      break;
+    case 9:
+      Serial.println("Ti-am mai spus de mii de ori, ai gresit comanda!"); 
+      break;
+    case 10:
+      Serial.println("Codrinel Bradea relateaza: iara gresesti comanda? cine te crezi? Codrin?"); 
       break;
     default:
       Serial.println("Comanda gresita."); 
