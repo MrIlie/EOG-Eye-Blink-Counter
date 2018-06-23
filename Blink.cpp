@@ -5,21 +5,30 @@
 int blinks = 0;          //contorizeaza numarul de clipiri
 
 
-void EyeBlink( int reset )
+void EyeBlink()
 {
-  
-  if( reset == 1 )
-  {
-    blinks = 0; 
-    Serial.println("reset");
-  }
-  else blinks++;
-  Serial.println(blinks);
+  blinks++;
+  //Serial.println(blinks);
 }
 
-void Blink_Frequency()
+void Blink_Frequency(int interval)
 {
-  Serial.print("--------------------");
-  Serial.println(blinks);
+  Serial.println("--------------------");
+  Serial.print(blinks);
+  Serial.print(" clipiri per ");
+  Serial.print(interval);
+  Serial.println(" secunde.");
+  blinks = 0;
+}
+
+
+void Blink_Stop()
+{
+  Serial.println("--------------------");
+  Serial.print("Pana acum s-au citit ");
+  Serial.print(blinks);
+  Serial.print(" clipiri");
+  Serial.println("");
+  blinks = 0;
 }
 
