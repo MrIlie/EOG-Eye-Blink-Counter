@@ -284,7 +284,7 @@ void loop() {
 
 void unrecognized()
 {
-  int var = random(0, 7);
+  int var = random(0, 9);
   switch (var) {
     case 1:
       Serial.println("Ce?"); 
@@ -303,6 +303,12 @@ void unrecognized()
       break;
     case 6:
       Serial.println("Nene, ai gresit comanda!"); 
+      break;
+    case 7:
+      Serial.println("Gresirea unei comenzi, imi violeaza ALU."); 
+      break;
+    case 8:
+      Serial.println("Nu mai gresi comanda, ba pastarnacule!"); 
       break;
     default:
       Serial.println("Comanda gresita."); 
