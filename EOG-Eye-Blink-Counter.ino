@@ -1,10 +1,21 @@
 
 // 14-05-2018
+//     |
+//     |
+//     V
+// 23-06-2018
+//     |
+//     |
+//     V
+//    ...
+
 
 #include <Keyboard.h>
 #include <CircularBuffer.h>
+#include <SerialCommands.h>
 #include <SimpleTimer.h>
 #include "main.h"
+
 
 
 #define SAMPLERATE   200                // Frecventa de esantionare semnal / canal
