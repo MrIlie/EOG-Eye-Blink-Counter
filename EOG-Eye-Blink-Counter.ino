@@ -34,7 +34,6 @@ unsigned int y_threshold_dn = 0;
 SimpleTimer read_data;
 SimpleTimer blink_monitor;              // Afiseaza cate clipiri au fost detectate intr-un minut
 
-CircularBuffer<int,SAMPLERATE> x_sampleBuf;
 CircularBuffer<int,SAMPLERATE> y_sampleBuf;
 
 int analog_yValue;                      // Valori analogice de semnal de la convertor 
@@ -168,7 +167,7 @@ void help() // Opreste citirea clipirilor
   Serial.println("      |- TIMP reprezinta tipul de unitate de masura: |- 1 pentru secunda");
   Serial.println("                                                     |- 2 pentru minut");
   Serial.println("");
-  Serial.println("Exemplu:");
+  /*Serial.println("Exemplu:");
   Serial.println(">start");
   Serial.println("Citeste clipirile la un interval de 10 de secunde (valoare implicita)");
   Serial.println("");
@@ -184,7 +183,7 @@ void help() // Opreste citirea clipirilor
   Serial.println("");
   Serial.println("");
   Serial.println("Comanda: close");
-  Serial.println("Intrerupe comunicatia cu calculatorul");
+  Serial.println("Intrerupe comunicatia cu calculatorul");*/
 }
 
 
@@ -291,7 +290,7 @@ void loop() {
 
 void unrecognized()
 {
-  int var = random(0, 10);
+  /*int var = random(0, 10);
   switch (var) {
     case 1:
       Serial.println("Ce?"); 
@@ -325,6 +324,8 @@ void unrecognized()
       break;
     default:
       Serial.println("Comanda gresita."); 
-  }
+  }*/
+  Serial.println("Nu am inteles comanda."); 
+  
 }
 
